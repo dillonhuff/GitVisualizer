@@ -41,7 +41,6 @@ modStrings projPath = do
       Nothing -> error $ "Could not parse " ++ logStr
       Just commits -> do
         changes <- sequence (L.map (modifiedFiles projPath) commits)
-        putStrLn $ show changes
         return changes
 
 modifiedFiles :: FilePath -> Commit -> IO [String]
