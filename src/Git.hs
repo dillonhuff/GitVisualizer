@@ -1,5 +1,6 @@
 module Git(Commit,
-           commit) where
+           commit,
+           commitName) where
 
 
 data Commit
@@ -7,3 +8,5 @@ data Commit
     deriving (Eq, Ord, Show)
 
 commit name = Commit name
+
+commitName (Commit str) = str

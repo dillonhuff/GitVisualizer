@@ -16,12 +16,21 @@ parseGitLogString str = case parse pLogString "Log string parser" str of
 pLogString = sepBy pCommit (char '\n')
 
 pCommit = do
-  commitName <- pCommitLine
+  commitName <- (try pCommitMergeLines) <|> pCommitLine
   pLine
   pLine
   pLine
-  pLine
+  pCommitMessage
   return $ commit commitName
+
+pCommitMergeLines = do
+  commit <- pCommitLine
+  pMergeLine
+  return commit
+
+pMergeLine = do
+  string "Merge:"
+  pLine
 
 pCommitLine = do
   string "commit"
@@ -29,7 +38,17 @@ pCommitLine = do
   commitName <- many1 alphaNum
   newline
   return commitName
-  
+
+pCommitMessage = do
+  many1 pCommitMessageLine
+
+pCommitMessageLine = do
+  char ' '
+  char ' '
+  char ' '
+  char ' '
+  pLine
+
 pLine = do
   many $ noneOf "\n"
   newline
