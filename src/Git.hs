@@ -1,6 +1,9 @@
-module Git(Commit) where
+module Git(Commit,
+           commit) where
 
 
 data Commit
-  = Commit
+  = Commit String
     deriving (Eq, Ord, Show)
+
+commit name = Commit name
