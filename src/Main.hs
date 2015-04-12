@@ -11,8 +11,8 @@ import Parser
 import Plot
 import HtmlReport
 
-projPath = "/Users/dillon/dxter"
-projName = "DxTer"
+projPath = "/Users/dillon/clojure"
+projName = "Clojure"
 
 main = do
   commits <- getCommits projPath

@@ -17,7 +17,7 @@ generateHtmlReport projRep = do
 
 generateModificationChart :: String -> [(String, Int)] -> IO ()
 generateModificationChart chartName modCountsByFile =
-  let modCountsByInd = L.zip [1..((length modCountsByFile) - 1)] $ L.map snd modCountsByFile in
+  let modCountsByInd = L.zip [1..(length modCountsByFile)] $ L.map snd modCountsByFile in
   plotModificationData chartName modCountsByInd
 
 reportHtml :: ProjectReport -> Html
