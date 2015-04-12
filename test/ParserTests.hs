@@ -36,8 +36,13 @@ gitLogStringCases =
        commit "402f590745efeab3774cac6e85c93cfd4508f523",
        commit "d7f28c4cb8283166963d59d3372717d06dea2715"]),
      
-     (multiLineCommitMessage, [commit "c6331da594479a41f8ba9e62bd2440804ccedbc8", commit "a04a57357683d4fe3e874ea71ae082094d9f894c", commit "e223765d1eef99d0fa7dce9742fd931c53b43f64"])]
+     (multiLineCommitMessage,
+      [commit "c6331da594479a41f8ba9e62bd2440804ccedbc8", commit "a04a57357683d4fe3e874ea71ae082094d9f894c", commit "e223765d1eef99d0fa7dce9742fd931c53b43f64"]),
+     (emptyCommitMessage,
+      [commit "b58d5badd4ed397f0f6e9be306ac12311c7049d9", commit "c66573864e1cdc9ba5cbef711ce70f0137c50f02"])]
 
 multiLineCommitMessage =
   "commit c6331da594479a41f8ba9e62bd2440804ccedbc8\nMerge: a04a573 bcd7cc3\nAuthor: Bryan Marker <bamarker@cs.utexas.edu>\nDate:   Sun Mar 1 11:15:01 2015 -0600\n\n    Merge branch 'master' of https://github.com/DxTer-project/dxter\n    \n    Conflicts:\n    \tsrc/tensors/driverTensors.cpp\n\ncommit a04a57357683d4fe3e874ea71ae082094d9f894c\nAuthor: Bryan Marker <bamarker@cs.utexas.edu>\nDate:   Sun Mar 1 11:13:39 2015 -0600\n\n    xqup\n\ncommit e223765d1eef99d0fa7dce9742fd931c53b43f64\nAuthor: Bryan Marker <bamarker@cs.utexas.edu>\nDate:   Sun Mar 1 10:23:32 2015 -0600\n\n    adding UQP driver\n"
 
+emptyCommitMessage =
+  "commit b58d5badd4ed397f0f6e9be306ac12311c7049d9\nAuthor: Rich Hickey <richhickey@gmail.com>\nDate:   Sun Jun 11 15:40:13 2006 +0000\n\ncommit c66573864e1cdc9ba5cbef711ce70f0137c50f02\nAuthor: Rich Hickey <richhickey@gmail.com>\nDate:   Sat Jun 10 21:22:42 2006 +0000\n\n    added FnSeq\n"

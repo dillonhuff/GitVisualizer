@@ -19,8 +19,8 @@ linData n = L.zip [1..n] $ L.map (\x -> x * 5) [1..n]
 dataPts :: [(Int, Int)]
 dataPts = [(12, 3), (9, 7), (8, 15)]
 
-projectPath = "/Users/dillon/dxter"
-resFileName = "dxter_changes"
+projectPath = "/Users/dillon/clojure"
+resFileName = "clojure_changes"
 
 main = do
   modStrs <- modStrings projectPath

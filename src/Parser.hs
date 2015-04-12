@@ -18,9 +18,7 @@ pLogString = sepBy pCommit (char '\n')
 pCommit = do
   commitName <- (try pCommitMergeLines) <|> pCommitLine
   pLine
-  pLine
-  pLine
-  pCommitMessage
+  (try pCommitMessage) <|> pLine
   return $ commit commitName
 
 pCommitMergeLines = do
@@ -40,7 +38,10 @@ pCommitLine = do
   return commitName
 
 pCommitMessage = do
+  pLine
+  newline
   many1 pCommitMessageLine
+  return ()
 
 pCommitMessageLine = do
   char ' '
@@ -50,5 +51,6 @@ pCommitMessageLine = do
   pLine
 
 pLine = do
-  many $ noneOf "\n"
+  contents <- many $ noneOf "\n"
   newline
+  return ()
