@@ -11,7 +11,7 @@ parseModifiedFilesString str = Just $ lines str
 parseGitLogString :: String -> Maybe [Commit]
 parseGitLogString str = case parse pLogString "Log string parser" str of
   Left err -> error $ show err
-  Right commits -> Just commits
+  Right commits -> Just $ reverse commits
 
 pLogString = sepBy pCommit (char '\n')
 

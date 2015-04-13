@@ -2,7 +2,6 @@ module Main(main) where
 
 import Control.Monad
 import Data.List as L
-import Data.Map as M
 import System.Environment
 
 import Analysis

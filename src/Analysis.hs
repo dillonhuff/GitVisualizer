@@ -11,7 +11,8 @@ import Report
 
 analyzers =
   [modCountsListReport,
-   modCountsBarChartReport]
+   modCountsBarChartReport,
+   filesChangedByCommitReport]
 
 modCountsListReport :: ProjectData -> Report
 modCountsListReport projData = sortedReport
@@ -40,3 +41,12 @@ strCounts m strs = L.foldl incStrCount m strs
 incStrCount m str = case M.lookup str m of
   Just count -> M.insert str (count +1) m
   Nothing -> M.insert str 1 m
+
+filesChangedByCommitReport :: ProjectData -> Report
+filesChangedByCommitReport projData = changesByCommitBarChart
+  where
+    modCounts = L.map L.length $ projectFileMods projData
+    commitNoModCount = L.zip [1..(length modCounts)] modCounts
+    changesByCommitBar = intBarPlotComp "commits_with_num_modified_files" "files modified by commit" commitNoModCount
+    changesByCommitBarChart = report "NumFilesChangedByCommitNumber" [changesByCommitBar]
+    

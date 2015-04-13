@@ -2,7 +2,7 @@
 -- documentation, see http://haskell.org/cabal/users-guide/
 
 name:                GitVisualizer
-version:             0.1.0.7
+version:             0.1.0.8
 synopsis:            A tool for visualizing and analyzing git version control data
 -- description:         
 homepage:            github.com/dillonhuff/GitVisualizer.git
