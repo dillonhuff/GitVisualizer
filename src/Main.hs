@@ -12,7 +12,7 @@ import Plot
 import ProjectData
 import ProjectSummary
 
-projPath = "/Users/dillon/dxter"
+projPath = "/Users/dillon/Haskell/GitVisualizer"
 projName = "GitVisualizer"
 
 analyzers =

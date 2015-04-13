@@ -28,7 +28,7 @@ writeProjectSummaryHtml ps@(ProjectSummary projName reps) =
   let summaryHtml = projectSummaryHtml ps in
   do
     topDirName <- createReportDirs projName
-    writeHtmlToFile (topDirName ++ "/" ++ projName ++ "_git_report") summaryHtml
+    writeHtmlToFile (topDirName ++ "/" ++ projName ++ "_git_report_") summaryHtml
     mapM_ (writeReportHtml topDirName) reps
 
 blurb :: Html
@@ -40,11 +40,16 @@ reportTitle projectName = H.title $ toHtml $ projectName ++ " Git Report"
 createReportDirs :: String -> IO String
 createReportDirs projName =
   do
-    createDirectoryIfMissing True $ topLevelDirName projName
-    createDirectoryIfMissing True $ chartsDirName projName
-    return $ topLevelDirName projName
+    let topDirNamePre = (topLevelDirName projName) in
+      do
+        dtStr <- dateTimeString
+        let topDirName = topDirNamePre ++ dtStr in
+          do
+            createDirectoryIfMissing True $ topDirName
+            createDirectoryIfMissing True $ chartsDirName topDirName
+            return topDirName
 
 topLevelDirName :: String -> String
-topLevelDirName projName = projName ++ "_git_report"
+topLevelDirName projName = projName ++ "_git_report_"
 
-chartsDirName projName = (topLevelDirName projName) ++ "/charts"
+chartsDirName filePath = filePath ++ "/charts"
