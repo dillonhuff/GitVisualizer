@@ -1,11 +1,16 @@
 module Analysis(modCountsListReport,
-                modCountsBarChartReport) where
+                modCountsBarChartReport,
+                analyzers) where
 
 import Data.List as L
 import Data.Map as M
 
 import ProjectData
 import Report
+
+analyzers =
+  [modCountsListReport,
+   modCountsBarChartReport]
 
 modCountsListReport :: ProjectData -> Report
 modCountsListReport projData = sortedReport
