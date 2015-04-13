@@ -11,14 +11,15 @@ import Parser
 import Plot
 import HtmlReport
 
-projPath = "/Users/dillon/clojure"
-projName = "Clojure"
+projPath = "/Users/dillon/dxter"
+projName = "DxTer"
 
 main = do
   commits <- getCommits projPath
   modFilesList <- modStrings commits projPath
-  let report = buildProjectReport projName projPath commits modFilesList in
-    generateHtmlReport report
+  let report = buildProjectReport projName projPath commits modFilesList
+      htmlRep = generateHtmlReport report in
+    writeHtmlReport htmlRep
 
 getCommits :: FilePath -> IO [Commit]
 getCommits projPath = do
