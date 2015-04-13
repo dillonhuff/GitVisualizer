@@ -43,6 +43,7 @@ gitLogStringCases =
      
      (multiLineCommitMessage,
       [commit "c6331da594479a41f8ba9e62bd2440804ccedbc8", commit "a04a57357683d4fe3e874ea71ae082094d9f894c", commit "e223765d1eef99d0fa7dce9742fd931c53b43f64"]),
+     
      (emptyCommitMessage,
       [commit "b58d5badd4ed397f0f6e9be306ac12311c7049d9", commit "c66573864e1cdc9ba5cbef711ce70f0137c50f02"])]
 
