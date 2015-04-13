@@ -13,7 +13,7 @@ import ProjectData
 import ProjectSummary
 
 projPath = "/Users/dillon/dxter"
-projName = "DxTer"
+projName = "GitVisualizer"
 
 analyzers =
   [modCountsListReport,
