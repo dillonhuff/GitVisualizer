@@ -1,4 +1,5 @@
-module ParserTests(allParseModifiedFilesStringTests,
+module ParserTests(allParserTests,
+                   allParseModifiedFilesStringTests,
                    allParseGitLogStringTests) where
 
 import Data.List as L
@@ -6,6 +7,10 @@ import Data.List as L
 import Git
 import Parser
 import TestUtils
+
+allParserTests = do
+  allParseModifiedFilesStringTests
+  allParseGitLogStringTests
 
 allParseModifiedFilesStringTests = do
   testFunction parseModifiedFilesString modStringCases

@@ -1,9 +1,13 @@
-module AnalysisTests(allModificationCountsTests) where
+module AnalysisTests(allAnalysisTests,
+                     allModificationCountsTests) where
 
 import Data.Map as M
 
 import Analysis
 import TestUtils
+
+allAnalysisTests = do
+  allModificationCountsTests
 
 allModificationCountsTests = do
   testFunction modificationCounts modCountsCases
