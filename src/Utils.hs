@@ -18,7 +18,7 @@ writeHtmlToFile fileName htmlText =
 
 chartHtml :: String -> String -> Html
 chartHtml imgPath imgAltTagText =
-  img ! src (toValue ("charts/" ++ imgPath ++ ".svg")) ! alt (toValue imgAltTagText)
+  img ! src (toValue ("charts/" ++ imgPath ++ ".png")) ! alt (toValue imgAltTagText)
 
 stringListToHtml :: String -> [String] -> Html
 stringListToHtml title items = body $ do

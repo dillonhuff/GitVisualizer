@@ -6,8 +6,8 @@ import Analysis
 import Backend
 import ProjectSummary
 
-projPath = "/Users/dillon/Haskell/GitVisualizer"
-projName = "GitVisualizer"
+projPath = "/Users/dillon/blis/"
+projName = "blis"
 
 main = do
   projData <- getProjectData projPath projName

@@ -2,7 +2,7 @@
 -- documentation, see http://haskell.org/cabal/users-guide/
 
 name:                GitVisualizer
-version:             0.1.0.8
+version:             0.1.0.10
 synopsis:            A tool for visualizing and analyzing git version control data
 -- description:         
 homepage:            github.com/dillonhuff/GitVisualizer.git
@@ -20,6 +20,6 @@ executable gitvis
   main-is:             Main.hs
   -- other-modules:       
   -- other-extensions:    
-  build-depends:       base >=4.7 && <4.8, containers >=0.5 && <0.6, process >=1.2 && <1.3, parsec >=3.1 && <3.2, Chart >=1.3 && <1.4, Chart-diagrams >=1.3 && <1.4, directory >=1.2 && <1.3, blaze-html >=0.8 && <0.9, time >=1.5 && <1.6, HUnit >=1.2 && <1.3
+  build-depends:       base >=4.7 && <4.8, containers >=0.5 && <0.6, process >=1.2 && <1.3, parsec >=3.1 && <3.2, Chart >=1.3 && <1.4, directory >=1.2 && <1.3, blaze-html >=0.8 && <0.9, time >=1.5 && <1.6, HUnit >=1.2 && <1.3, Chart-cairo
   hs-source-dirs:      src
   default-language:    Haskell2010
