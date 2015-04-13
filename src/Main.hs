@@ -3,6 +3,7 @@ module Main(main) where
 import Control.Monad
 import Data.List as L
 import Data.Map as M
+import System.Environment
 
 import Analysis
 import Git
@@ -12,20 +13,21 @@ import Plot
 import ProjectData
 import ProjectSummary
 
-projPath = "/Users/dillon/Haskell/GitVisualizer"
-projName = "GitVisualizer"
-
 analyzers =
   [modCountsListReport,
    modCountsBarChartReport]
 
 main = do
-  commits <- getCommits projPath
-  modFilesList <- modStrings commits projPath
-  let projData = buildProjectData projName projPath commits modFilesList
-      reports = L.map (\f -> f projData) analyzers
-      projSummary = projectSummary projName reports in
-    writeProjectSummaryHtml projSummary
+  args <- getArgs
+  let projPath = args !! 0
+      projName = args !! 1 in
+    do
+      commits <- getCommits projPath
+      modFilesList <- modStrings commits projPath
+      let projData = buildProjectData projName projPath commits modFilesList
+          reports = L.map (\f -> f projData) analyzers
+          projSummary = projectSummary projName reports in
+        writeProjectSummaryHtml projSummary
 
 getCommits :: FilePath -> IO [Commit]
 getCommits projPath = do
