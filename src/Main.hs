@@ -9,17 +9,23 @@ import Git
 import GitSystem
 import Parser
 import Plot
-import HtmlReport
+import ProjectData
+import ProjectSummary
 
 projPath = "/Users/dillon/dxter"
 projName = "DxTer"
 
+analyzers =
+  [modCountsListReport,
+   modCountsBarChartReport]
+
 main = do
   commits <- getCommits projPath
   modFilesList <- modStrings commits projPath
-  let report = buildProjectReport projName projPath commits modFilesList
-      htmlRep = generateHtmlReport report in
-    writeHtmlReport htmlRep
+  let projData = buildProjectData projName projPath commits modFilesList
+      reports = L.map (\f -> f projData) analyzers
+      projSummary = projectSummary projName reports in
+    writeProjectSummaryHtml projSummary
 
 getCommits :: FilePath -> IO [Commit]
 getCommits projPath = do

@@ -1,4 +1,5 @@
-module ProjectSummary() where
+module ProjectSummary(projectSummary,
+                      writeProjectSummaryHtml) where
 
 import Control.Monad as M
 import Data.List as L
@@ -11,6 +12,8 @@ import Utils
 data ProjectSummary
   = ProjectSummary String [Report]
 
+projectSummary n rs = ProjectSummary n rs
+
 projectSummaryHtml :: ProjectSummary -> Html
 projectSummaryHtml (ProjectSummary name reps) =
   docTypeHtml $ do
@@ -18,7 +21,7 @@ projectSummaryHtml (ProjectSummary name reps) =
         H.title $ toHtml (name ++ " Git Report")
       body $ do
         blurb
-        stringListToHtml "Reports" $ L.map reportName reps
+        stringListToHyperLinkList "Reports" $ L.map reportName reps
 
 writeProjectSummaryHtml :: ProjectSummary -> IO ()
 writeProjectSummaryHtml ps@(ProjectSummary projName reps) =

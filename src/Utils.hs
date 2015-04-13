@@ -1,6 +1,7 @@
 module Utils(writeHtmlToFile,
              chartHtml,
-             stringListToHtml) where
+             stringListToHtml,
+             stringListToHyperLinkList) where
 
 import Control.Monad
 import Text.Blaze.Html5 as H
@@ -19,3 +20,8 @@ stringListToHtml :: String -> [String] -> Html
 stringListToHtml title items = body $ do
   p $ toHtml title
   ul $ forM_ items (li . toHtml)
+
+stringListToHyperLinkList :: String -> [String] -> Html
+stringListToHyperLinkList title items = body $ do
+  p $ toHtml title
+  ul $ forM_ items (\linkName -> li $ a ! href (toValue $ linkName ++ ".html") $ toHtml linkName)

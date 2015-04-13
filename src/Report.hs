@@ -2,6 +2,7 @@ module Report(Report,
               report,
               reportName,
               writeReportHtml,
+              intBarPlotComp,
               strListComp) where
 
 import Control.Monad
@@ -24,6 +25,7 @@ data ReportComponent
   | StrList String [String]
     deriving (Eq, Ord, Show)
 
+intBarPlotComp n seriesName sData = IntBarPlot n seriesName sData
 strListComp n strs = StrList n strs
 
 reportComponentToHtml :: String -> ReportComponent -> IO Html
